@@ -1,6 +1,7 @@
 import json
 import os
 import time
+import urllib.error
 import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
@@ -89,6 +90,15 @@ def main():
                 if not achievements:
                     item["achievements_unavailable"] = True
                     item["error"] = "Steam returned no achievement records"
+        except urllib.error.HTTPError as exc:
+            body = exc.read().decode("utf-8", "replace")
+            try:
+                error_data = json.loads(body)
+                detail = error_data.get("playerstats", {}).get("error")
+            except (json.JSONDecodeError, AttributeError):
+                detail = None
+            item["achievements_unavailable"] = True
+            item["error"] = f"HTTP {exc.code}: {detail or exc.reason}"[:240]
         except Exception as exc:
             item["achievements_unavailable"] = True
             item["error"] = str(exc)[:240]
