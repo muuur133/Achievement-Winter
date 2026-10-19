@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-19T19:48:49.039965+00:00",
+  "updated_at": "2026-10-19T19:49:26.739509+00:00",
   "steam_id": "76561199223848682",
   "games": {
     "254700": {
@@ -302,7 +302,7 @@
       "player_achievements_total": 44,
       "schema_achievements_total": 44,
       "achievement_counts_match": true,
-      "dlc_scope_verified": false,
+      "dlc_scope_verified": true,
       "achievement_percent": 4.5,
       "error": null
     },
@@ -334,7 +334,7 @@
       "player_achievements_total": 49,
       "schema_achievements_total": 49,
       "achievement_counts_match": true,
-      "dlc_scope_verified": false,
+      "dlc_scope_verified": true,
       "achievement_percent": 8.2,
       "error": null
     },
