@@ -2,6 +2,11 @@ name: Sync Steam achievements
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/steam_sync.py'
+      - '.github/workflows/steam-sync.yml'
   schedule:
     - cron: "*/15 * * * *"
 
