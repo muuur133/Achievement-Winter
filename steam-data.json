@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-19T19:28:00.343581+00:00",
+  "updated_at": "2026-10-19T19:32:35.850289+00:00",
   "steam_id": "76561199223848682",
   "games": {
     "254700": {
@@ -194,17 +194,17 @@
       "achievement_percent": 16.0,
       "error": null
     },
-    "22380": {
-      "appid": 22380,
-      "name": "Fallout: New Vegas",
-      "owned": false,
-      "playtime_minutes": null,
-      "playtime_hours": null,
-      "achievements_unavailable": true,
-      "achievements_earned": null,
-      "achievements_total": null,
-      "achievement_percent": null,
-      "error": "HTTP 403: Profile is not public"
+    "22490": {
+      "appid": 22490,
+      "name": "Fallout: New Vegas (PCR)",
+      "owned": true,
+      "playtime_minutes": 275,
+      "playtime_hours": 4.6,
+      "achievements_unavailable": false,
+      "achievements_earned": 2,
+      "achievements_total": 75,
+      "achievement_percent": 2.7,
+      "error": null
     },
     "2369390": {
       "appid": 2369390,
