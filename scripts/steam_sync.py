@@ -41,6 +41,34 @@ GAMES = [
     (525480, ".hack//G.U. Last Recode"),
 ]
 
+# Cross-checked totals from Steam Community achievement pages.
+# Games omitted here remain unverified until their published total is checked.
+VERIFIED_TOTALS = {
+    254700: 12,       # Resident Evil 4 (2005)
+    233290: 48,       # MURDERED: SOUL SUSPECT
+    601360: 21,       # Portal: Revolution
+    204450: 26,       # Call of Juarez: Gunslinger
+    1687950: 53,      # Persona 5 Royal
+    48000: 13,        # LIMBO
+    50130: 67,        # Mafia II (Classic)
+    349040: 53,       # Naruto Shippuden: Ultimate Ninja STORM 4
+    883710: 44,       # Resident Evil 2
+    307690: 59,       # Sleeping Dogs: Definitive Edition
+    1817230: 71,      # Hi-Fi RUSH
+    610370: 36,       # Desperados III
+    1091500: 57,      # Cyberpunk 2077
+    489830: 75,       # Skyrim Special Edition
+    1382330: 47,      # Persona 5 Strikers
+    397540: 81,       # Borderlands 3
+    22490: 75,        # Fallout: New Vegas PCR
+    2369390: 99,      # Far Cry 6
+    847370: 80,       # Sunset Overdrive
+    389730: 42,       # Tekken 7
+    1420290: 20,      # No More Heroes
+    105600: 137,      # Terraria
+    525480: 52,       # .hack//G.U. Last Recode
+}
+
 def steam_json(endpoint, params):
     params = {"key": API_KEY, **params}
     url = "https://api.steampowered.com/" + endpoint + "?" + urllib.parse.urlencode(params)
@@ -102,6 +130,17 @@ def main():
                 except Exception:
                     item["achievements_total"] = len(achievements)
                 total = item["achievements_total"]
+                expected_total = VERIFIED_TOTALS.get(app_id)
+                item["dlc_scope_verified"] = (
+                    expected_total is not None
+                    and item["schema_achievements_total"] == expected_total
+                    and item["achievement_counts_match"] is True
+                )
+                if expected_total is not None and item["schema_achievements_total"] != expected_total:
+                    item["error"] = (
+                        f"Steam schema total differs from verified reference: "
+                        f"{item['schema_achievements_total']} vs {expected_total}"
+                    )
                 item["achievement_percent"] = round(100 * item["achievements_earned"] / total, 1) if total else None
                 if not achievements:
                     item["achievements_unavailable"] = True
