@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-19T19:47:15.346482+00:00",
+  "updated_at": "2026-10-19T19:48:49.039965+00:00",
   "steam_id": "76561199223848682",
   "games": {
     "254700": {
@@ -14,7 +14,7 @@
       "player_achievements_total": 12,
       "schema_achievements_total": 12,
       "achievement_counts_match": true,
-      "dlc_scope_verified": false,
+      "dlc_scope_verified": true,
       "achievement_percent": 91.7,
       "error": null
     },
@@ -30,7 +30,7 @@
       "player_achievements_total": 48,
       "schema_achievements_total": 48,
       "achievement_counts_match": true,
-      "dlc_scope_verified": false,
+      "dlc_scope_verified": true,
       "achievement_percent": 47.9,
       "error": null
     },
@@ -46,7 +46,7 @@
       "player_achievements_total": 21,
       "schema_achievements_total": 21,
       "achievement_counts_match": true,
-      "dlc_scope_verified": false,
+      "dlc_scope_verified": true,
       "achievement_percent": 28.6,
       "error": null
     },
@@ -62,7 +62,7 @@
       "player_achievements_total": 26,
       "schema_achievements_total": 26,
       "achievement_counts_match": true,
-      "dlc_scope_verified": false,
+      "dlc_scope_verified": true,
       "achievement_percent": 15.4,
       "error": null
     },
@@ -78,7 +78,7 @@
       "player_achievements_total": 53,
       "schema_achievements_total": 53,
       "achievement_counts_match": true,
-      "dlc_scope_verified": false,
+      "dlc_scope_verified": true,
       "achievement_percent": 86.8,
       "error": null
     },
@@ -94,7 +94,7 @@
       "player_achievements_total": 13,
       "schema_achievements_total": 13,
       "achievement_counts_match": true,
-      "dlc_scope_verified": false,
+      "dlc_scope_verified": true,
       "achievement_percent": 0.0,
       "error": null
     },
@@ -110,7 +110,7 @@
       "player_achievements_total": 67,
       "schema_achievements_total": 67,
       "achievement_counts_match": true,
-      "dlc_scope_verified": false,
+      "dlc_scope_verified": true,
       "achievement_percent": 41.8,
       "error": null
     },
@@ -126,7 +126,7 @@
       "player_achievements_total": 53,
       "schema_achievements_total": 53,
       "achievement_counts_match": true,
-      "dlc_scope_verified": false,
+      "dlc_scope_verified": true,
       "achievement_percent": 81.1,
       "error": null
     },
@@ -142,7 +142,7 @@
       "player_achievements_total": 44,
       "schema_achievements_total": 44,
       "achievement_counts_match": true,
-      "dlc_scope_verified": false,
+      "dlc_scope_verified": true,
       "achievement_percent": 22.7,
       "error": null
     },
@@ -158,7 +158,7 @@
       "player_achievements_total": 59,
       "schema_achievements_total": 59,
       "achievement_counts_match": true,
-      "dlc_scope_verified": false,
+      "dlc_scope_verified": true,
       "achievement_percent": 25.4,
       "error": null
     },
@@ -174,7 +174,7 @@
       "player_achievements_total": 71,
       "schema_achievements_total": 71,
       "achievement_counts_match": true,
-      "dlc_scope_verified": false,
+      "dlc_scope_verified": true,
       "achievement_percent": 33.8,
       "error": null
     },
@@ -190,7 +190,7 @@
       "player_achievements_total": 36,
       "schema_achievements_total": 36,
       "achievement_counts_match": true,
-      "dlc_scope_verified": false,
+      "dlc_scope_verified": true,
       "achievement_percent": 0.0,
       "error": null
     },
@@ -206,7 +206,7 @@
       "player_achievements_total": 57,
       "schema_achievements_total": 57,
       "achievement_counts_match": true,
-      "dlc_scope_verified": false,
+      "dlc_scope_verified": true,
       "achievement_percent": 1.8,
       "error": null
     },
@@ -222,7 +222,7 @@
       "player_achievements_total": 75,
       "schema_achievements_total": 75,
       "achievement_counts_match": true,
-      "dlc_scope_verified": false,
+      "dlc_scope_verified": true,
       "achievement_percent": 29.3,
       "error": null
     },
@@ -238,7 +238,7 @@
       "player_achievements_total": 47,
       "schema_achievements_total": 47,
       "achievement_counts_match": true,
-      "dlc_scope_verified": false,
+      "dlc_scope_verified": true,
       "achievement_percent": 2.1,
       "error": null
     },
@@ -254,7 +254,7 @@
       "player_achievements_total": 81,
       "schema_achievements_total": 81,
       "achievement_counts_match": true,
-      "dlc_scope_verified": false,
+      "dlc_scope_verified": true,
       "achievement_percent": 16.0,
       "error": null
     },
@@ -270,7 +270,7 @@
       "player_achievements_total": 75,
       "schema_achievements_total": 75,
       "achievement_counts_match": true,
-      "dlc_scope_verified": false,
+      "dlc_scope_verified": true,
       "achievement_percent": 2.7,
       "error": null
     },
@@ -286,7 +286,7 @@
       "player_achievements_total": 99,
       "schema_achievements_total": 99,
       "achievement_counts_match": true,
-      "dlc_scope_verified": false,
+      "dlc_scope_verified": true,
       "achievement_percent": 0.0,
       "error": null
     },
@@ -318,7 +318,7 @@
       "player_achievements_total": 80,
       "schema_achievements_total": 80,
       "achievement_counts_match": true,
-      "dlc_scope_verified": false,
+      "dlc_scope_verified": true,
       "achievement_percent": 5.0,
       "error": null
     },
@@ -350,7 +350,7 @@
       "player_achievements_total": 42,
       "schema_achievements_total": 42,
       "achievement_counts_match": true,
-      "dlc_scope_verified": false,
+      "dlc_scope_verified": true,
       "achievement_percent": 64.3,
       "error": null
     },
@@ -366,7 +366,7 @@
       "player_achievements_total": 20,
       "schema_achievements_total": 20,
       "achievement_counts_match": true,
-      "dlc_scope_verified": false,
+      "dlc_scope_verified": true,
       "achievement_percent": 0.0,
       "error": null
     },
@@ -382,7 +382,7 @@
       "player_achievements_total": 137,
       "schema_achievements_total": 137,
       "achievement_counts_match": true,
-      "dlc_scope_verified": false,
+      "dlc_scope_verified": true,
       "achievement_percent": 68.6,
       "error": null
     },
@@ -398,7 +398,7 @@
       "player_achievements_total": 52,
       "schema_achievements_total": 52,
       "achievement_counts_match": true,
-      "dlc_scope_verified": false,
+      "dlc_scope_verified": true,
       "achievement_percent": 0.0,
       "error": null
     }
