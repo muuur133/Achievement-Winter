@@ -30,7 +30,7 @@ GAMES = [
     (489830, "Skyrim Special Edition"),
     (1382330, "Persona 5 Strikers"),
     (397540, "Borderlands 3"),
-    (22380, "Fallout: New Vegas"),
+    (22490, "Fallout: New Vegas (PCR)"),
     (2369390, "Far Cry 6"),
     (2427410, "S.T.A.L.K.E.R.: Shadow of Chornobyl Enhanced Edition"),
     (847370, "Sunset Overdrive"),
