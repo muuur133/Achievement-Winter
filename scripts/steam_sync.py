@@ -88,12 +88,26 @@ def main():
                 item["error"] = stats.get("error", "Steam stats are not available for this game")
             else:
                 achievements = stats.get("achievements", [])
-                item["achievements_total"] = len(achievements)
+                item["player_achievements_total"] = len(achievements)
                 item["achievements_earned"] = sum(1 for a in achievements if int(a.get("achieved", 0)) == 1)
-                item["achievement_percent"] = round(100 * item["achievements_earned"] / len(achievements), 1) if achievements else None
+                try:
+                    schema = steam_json("ISteamUserStats/GetSchemaForGame/v2/", {"appid": app_id, "l": "en"}).get("game", {}).get("availableGameStats", {})
+                    schema_achievements = schema.get("achievements", [])
+                    if schema_achievements:
+                        item["schema_achievements_total"] = len(schema_achievements)
+                        item["achievements_total"] = len(schema_achievements)
+                        item["achievement_counts_match"] = len(achievements) == len(schema_achievements)
+                    else:
+                        item["achievements_total"] = len(achievements)
+                except Exception:
+                    item["achievements_total"] = len(achievements)
+                total = item["achievements_total"]
+                item["achievement_percent"] = round(100 * item["achievements_earned"] / total, 1) if total else None
                 if not achievements:
                     item["achievements_unavailable"] = True
                     item["error"] = "Steam returned no achievement records"
+                elif item["achievement_counts_match"] is False:
+                    item["error"] = "Player achievement list differs from full schema; review required"
         except urllib.error.HTTPError as exc:
             body = exc.read().decode("utf-8", "replace")
             try:
