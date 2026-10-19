@@ -1,0 +1,103 @@
+import json
+import os
+import time
+import urllib.parse
+import urllib.request
+from datetime import datetime, timezone
+from pathlib import Path
+
+STEAM_ID = "76561199223848682"
+API_KEY = os.environ["STEAM_API_KEY"]
+ROOT = Path(__file__).resolve().parents[1]
+OUTPUT = ROOT / "steam-data.json"
+
+# Steam App IDs for the 25 games in the challenge.
+GAMES = [
+    (254700, "Resident Evil 4 (2005)"),
+    (233290, "MURDERED: SOUL SUSPECT"),
+    (601360, "Portal: Revolution"),
+    (204450, "Call of Juarez: Gunslinger"),
+    (1687950, "Persona 5 Royal"),
+    (48000, "LIMBO"),
+    (50130, "Mafia II (Classic)"),
+    (349040, "Naruto Shippuden: Ultimate Ninja Storm 4"),
+    (883710, "Resident Evil 2"),
+    (307690, "Sleeping Dogs: Definitive Edition"),
+    (1817230, "Hi-Fi RUSH"),
+    (610370, "Desperados III"),
+    (1091500, "Cyberpunk 2077"),
+    (489830, "Skyrim Special Edition"),
+    (1382330, "Persona 5 Strikers"),
+    (397540, "Borderlands 3"),
+    (22380, "Fallout: New Vegas"),
+    (2369390, "Far Cry 6"),
+    (4500, "S.T.A.L.K.E.R.: Shadow of Chornobyl Enhanced Edition"),
+    (847370, "Sunset Overdrive"),
+    (544750, "Soulcalibur VI"),
+    (389730, "Tekken 7"),
+    (1420290, "No More Heroes"),
+    (105600, "Terraria"),
+    (525480, ".hack//G.U. Last Recode"),
+]
+
+def steam_json(endpoint, params):
+    params = {"key": API_KEY, **params}
+    url = "https://api.steampowered.com/" + endpoint + "?" + urllib.parse.urlencode(params)
+    req = urllib.request.Request(url, headers={"User-Agent": "AchievementWinter/1.0"})
+    with urllib.request.urlopen(req, timeout=25) as response:
+        return json.loads(response.read().decode("utf-8"))
+
+def main():
+    owned_response = steam_json(
+        "IPlayerService/GetOwnedGames/v1/",
+        {"steamid": STEAM_ID, "include_appinfo": "true", "include_played_free_games": "true"},
+    )
+    owned_games = owned_response.get("response", {}).get("games", [])
+    owned = {game["appid"]: game for game in owned_games}
+    result = {
+        "updated_at": datetime.now(timezone.utc).isoformat(),
+        "steam_id": STEAM_ID,
+        "games": {},
+    }
+
+    for app_id, title in GAMES:
+        item = {
+            "appid": app_id,
+            "name": title,
+            "owned": app_id in owned,
+            "playtime_minutes": owned.get(app_id, {}).get("playtime_forever"),
+            "playtime_hours": round(owned[app_id]["playtime_forever"] / 60, 1) if app_id in owned else None,
+            "achievements_unavailable": False,
+            "achievements_earned": None,
+            "achievements_total": None,
+            "achievement_percent": None,
+            "error": None,
+        }
+        try:
+            stats = steam_json(
+                "ISteamUserStats/GetPlayerAchievements/v1/",
+                {"steamid": STEAM_ID, "appid": app_id, "l": "en"},
+            ).get("playerstats", {})
+            if stats.get("success") is False:
+                item["achievements_unavailable"] = True
+                item["error"] = stats.get("error", "Steam stats are not available for this game")
+            else:
+                achievements = stats.get("achievements", [])
+                item["achievements_total"] = len(achievements)
+                item["achievements_earned"] = sum(1 for a in achievements if int(a.get("achieved", 0)) == 1)
+                item["achievement_percent"] = round(100 * item["achievements_earned"] / len(achievements), 1) if achievements else None
+                if not achievements:
+                    item["achievements_unavailable"] = True
+                    item["error"] = "Steam returned no achievement records"
+        except Exception as exc:
+            item["achievements_unavailable"] = True
+            item["error"] = str(exc)[:240]
+        result["games"][str(app_id)] = item
+        time.sleep(0.15)
+
+    OUTPUT.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    available = sum(1 for game in result["games"].values() if game["achievements_total"] is not None)
+    print(f"Wrote {OUTPUT.name}: {available}/{len(GAMES)} games returned achievement data.")
+
+if __name__ == "__main__":
+    main()
