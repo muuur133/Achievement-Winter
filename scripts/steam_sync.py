@@ -95,6 +95,17 @@ def main():
         result["games"][str(app_id)] = item
         time.sleep(0.15)
 
+    # Avoid creating a Git commit every 15 minutes when the data has not changed.
+    try:
+        previous = json.loads(OUTPUT.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        previous = {}
+
+    if previous.get("games") == result["games"]:
+        result["updated_at"] = previous.get("updated_at")
+        print("Steam data is unchanged; keeping the existing timestamp.")
+        return
+
     OUTPUT.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     available = sum(1 for game in result["games"].values() if game["achievements_total"] is not None)
     print(f"Wrote {OUTPUT.name}: {available}/{len(GAMES)} games returned achievement data.")
