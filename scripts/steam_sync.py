@@ -71,6 +71,10 @@ def main():
             "achievements_unavailable": False,
             "achievements_earned": None,
             "achievements_total": None,
+            "player_achievements_total": None,
+            "schema_achievements_total": None,
+            "achievement_counts_match": None,
+            "dlc_scope_verified": False,
             "achievement_percent": None,
             "error": None,
         }
