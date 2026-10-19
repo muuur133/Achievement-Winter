@@ -31,7 +31,7 @@ GAMES = [
     (397540, "Borderlands 3"),
     (22380, "Fallout: New Vegas"),
     (2369390, "Far Cry 6"),
-    (4500, "S.T.A.L.K.E.R.: Shadow of Chornobyl Enhanced Edition"),
+    (2427410, "S.T.A.L.K.E.R.: Shadow of Chornobyl Enhanced Edition"),
     (847370, "Sunset Overdrive"),
     (544750, "Soulcalibur VI"),
     (389730, "Tekken 7"),
