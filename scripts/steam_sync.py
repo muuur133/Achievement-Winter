@@ -67,6 +67,8 @@ VERIFIED_TOTALS = {
     1420290: 20,      # No More Heroes
     105600: 137,      # Terraria
     525480: 52,       # .hack//G.U. Last Recode
+    2427410: 44,      # S.T.A.L.K.E.R.: Shadow of Chornobyl Enhanced Edition
+    544750: 49,       # Soulcalibur VI
 }
 
 def steam_json(endpoint, params):
