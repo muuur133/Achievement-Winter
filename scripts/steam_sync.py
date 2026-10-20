@@ -81,7 +81,7 @@ def steam_json(endpoint, params):
 def main():
     owned_response = steam_json(
         "IPlayerService/GetOwnedGames/v1/",
-        {"steamid": STEAM_ID, "include_appinfo": "true", "include_played_free_games": "true"},
+        {"steamid": STEAM_ID, "include_appinfo": "true", "include_played_free_games": "true", "include_family_licenses": "true"},
     )
     owned_games = owned_response.get("response", {}).get("games", [])
     owned = {game["appid"]: game for game in owned_games}
@@ -92,12 +92,15 @@ def main():
     }
 
     for app_id, title in GAMES:
+        library_game = owned.get(app_id, {})
+        family_shared = library_game.get("family_shared") in (True, 1, "1")
         item = {
             "appid": app_id,
             "name": title,
-            "owned": app_id in owned,
-            "playtime_minutes": owned.get(app_id, {}).get("playtime_forever"),
-            "playtime_hours": round(owned[app_id]["playtime_forever"] / 60, 1) if app_id in owned else None,
+            "owned": app_id in owned and not family_shared,
+            "family_shared": family_shared,
+            "playtime_minutes": library_game.get("playtime_forever"),
+            "playtime_hours": round(library_game["playtime_forever"] / 60, 1) if library_game.get("playtime_forever") is not None else None,
             "achievements_unavailable": False,
             "achievements_earned": None,
             "achievements_total": None,
