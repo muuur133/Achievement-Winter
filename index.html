@@ -65,7 +65,9 @@ function renderDetail(){
  detail.innerHTML='<button class="btn detail-back" id="detailBack">← Назад к коллекции</button><div class="detail-hero" style="--detail-bg:url(&quot;'+art+'&quot;)"><div><div class="eyebrow">ACHIEVEMENT WINTER · ИГРА #'+(games.indexOf(g)+1)+'</div><h2>'+esc(g.name)+'</h2><span class="status '+(confirmedDone(g)?'done':needsCheck(g)?'check':g.status==='active'||hasProgress(g)?'active':'')+'">'+esc(statusLabel(g))+'</span><div class="detail-actions"><a href="https://store.steampowered.com/app/'+g.appid+'/" target="_blank" rel="noopener noreferrer">Открыть в Steam ↗</a><button class="btn" id="detailEdit">Редактировать запись</button></div></div></div><div class="detail-layout"><div style="display:grid;gap:14px;align-content:start"><div class="detail-panel"><h3>Прогресс достижений</h3><div class="line"><span>'+esc(progress)+'</span><b>'+(g.total==null?'—':pctValue+'%')+'</b></div><div class="track"><div class="fill" style="width:'+pctValue+'%"></div></div><p class="muted">'+(g.total==null?'Статистика появится после синхронизации Steam.':confirmedDone(g)?'100% подтверждено с учётом проверки DLC.':needsCheck(g)?'Все доступные достижения получены, но проверка полного состава DLC ещё нужна.':'До полной коллекции ещё есть достижения.')+'</p></div>'+review+'</div><div style="display:grid;gap:14px;align-content:start"><div class="detail-panel"><img class="detail-art" src="'+art+'" alt="Обложка '+esc(g.name)+'" onerror="this.onerror=null;this.src=\'https://cdn.akamai.steamstatic.com/steam/apps/'+g.appid+'/capsule_616x353.jpg\'"><div class="detail-statgrid" style="margin-top:12px"><div class="detail-stat"><small>Время в Steam</small><strong>'+(g.hours==null?'—':esc(g.hours)+' ч')+'</strong></div><div class="detail-stat"><small>Ранг охоты</small><strong>'+(g.tier?esc(g.tier):'—')+'</strong><small>'+(g.tier?esc(tierNames[g.tier]||''):'Не оценена')+'</small></div><div class="detail-stat"><small>Оценка игры</small><strong>'+(g.rating?esc(g.rating)+'/10':'—')+'</strong></div><div class="detail-stat"><small>Дата 100%</small><strong style="font-size:14px">'+(g.date?esc(g.date):'—')+'</strong></div></div>'+(g.familyShared?'<p class="muted">Игра из семейной библиотеки — время может не учитываться в Steam API.</p>':'')+'</div><div class="detail-panel"><h3>Статус 100%</h3><p class="muted">'+(confirmedDone(g)?'Проверка достижений и DLC пройдена.':needsCheck(g)?'Нужна дополнительная проверка DLC.':g.status==='done'?'Владелец вручную отметил игру завершённой.':'Статус: '+esc(g.status==='active'?'В процессе':'Не начата'))+'</p></div></div></div>';
  $('detailBack').onclick=()=>location.href=location.pathname;
  $('detailEdit').onclick=()=>{open(g.id);};
-}\nwindow.awRender=render;window.awSaveLocal=saveLocal;\nfunction load(){let g=games[+$('game').value];if(!g)return;$('status').value=g.status;$('tier').value=g.tier;$('rating').value=g.rating;$('date').value=g.date;$('review').value=g.review}
+}
+window.awRender=render;window.awSaveLocal=saveLocal;
+function load(){let g=games[+$('game').value];if(!g)return;$('status').value=g.status;$('tier').value=g.tier;$('rating').value=g.rating;$('date').value=g.date;$('review').value=g.review}
 function open(id=0){$('modal').classList.add('open');$('game').value=id;load()}function close(){$('modal').classList.remove('open')}
 $('tiers').addEventListener('dragstart',e=>{const item=e.target.closest('.tiergame[draggable="true"]');if(!item||!window.awCanEdit||!window.awCanEdit())return;e.dataTransfer.setData('text/plain',item.dataset.appid);e.dataTransfer.effectAllowed='move'});
 $('tiers').addEventListener('dragover',e=>{const zone=e.target.closest('.tierchips[data-tier]');if(!zone||!window.awCanEdit||!window.awCanEdit())return;e.preventDefault();zone.classList.add('dragover');if(e.dataTransfer)e.dataTransfer.dropEffect='move'});
@@ -92,12 +94,14 @@ const saveButton = document.getElementById('save');
 const addGameButton = document.getElementById('addGame');
 let customGames = [];
 function setMessage(message, error=false){authMessage.textContent=message;authMessage.style.color=error?'#ff9caa':'#a6aac8';authMessage.classList.toggle('login-error',error)}
-window.awCanEdit=()=>Boolean(cloudUser&&cloudReady);\nfunction setAuthUI(){
+window.awCanEdit=()=>Boolean(cloudUser&&cloudReady);
+function setAuthUI(){
   authState.textContent = cloudUser ? 'Вход выполнен: '+cloudUser.email : 'Войди, чтобы редактировать данные.';
   authToggle.textContent = cloudUser ? 'Выйти' : 'Войти';
   if(cloudUser){cloudAuthBox.style.display='none';authLoginForm.classList.remove('open');authToggle.disabled=false;}
   else {authToggle.disabled=false;}
-  saveButton.disabled = !cloudUser || !cloudReady;\n  if(window.awRender) window.awRender();
+  saveButton.disabled = !cloudUser || !cloudReady;
+  if(window.awRender) window.awRender();
   addGameButton.disabled = !cloudUser || !cloudReady;
 }
 async function loadCloudData(){
