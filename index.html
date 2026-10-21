@@ -63,15 +63,18 @@ let cloudReady = false;
 const authState = document.getElementById('authState');
 const authMessage = document.getElementById('authMessage');
 const loginButton = document.getElementById('ownerLogin');
-const logoutButton = document.getElementById('ownerLogout');
+const authToggle = document.getElementById('authToggle');
+const authLoginForm = document.getElementById('authLoginForm');
+const cloudAuthBox = document.getElementById('cloudAuth');
 const saveButton = document.getElementById('save');
 const addGameButton = document.getElementById('addGame');
 let customGames = [];
-function setMessage(message, error=false){authMessage.textContent=message;authMessage.style.color=error?'#ff9caa':'#a6aac8'}
+function setMessage(message, error=false){authMessage.textContent=message;authMessage.style.color=error?'#ff9caa':'#a6aac8';authMessage.classList.toggle('login-error',error)}
 function setAuthUI(){
-  authState.textContent = cloudUser ? 'Вход выполнен: '+cloudUser.email : 'Не выполнен вход. Публичный просмотр доступен всем.';
-  loginButton.textContent = cloudUser ? 'Обновить вход' : 'Войти для редактирования';
-  logoutButton.disabled = !cloudUser;
+  authState.textContent = cloudUser ? 'Вход выполнен: '+cloudUser.email : 'Войди, чтобы редактировать данные.';
+  authToggle.textContent = cloudUser ? 'Выйти' : 'Войти';
+  if(cloudUser){cloudAuthBox.style.display='none';authLoginForm.classList.remove('open');authToggle.disabled=false;}
+  else {authToggle.disabled=false;}
   saveButton.disabled = !cloudUser || !cloudReady;
   addGameButton.disabled = !cloudUser || !cloudReady;
 }
@@ -124,6 +127,18 @@ addGameButton.addEventListener('click',async()=>{
   if(!ok){customGames=customGames.filter(x=>x.appid!==appid);window.awGames=window.awGames.filter(g=>Number(g.appid)!==appid);saveLocal();render();message.textContent='Не удалось сохранить игру. Попробуй ещё раз.';return}
   input.value='';message.textContent='Игра добавлена! Steam подтянет название и статистику при следующей синхронизации (обычно до 15 минут).';
 });
+authToggle.addEventListener('click',async()=>{
+  if(cloudUser){
+    const {error}=await supabase.auth.signOut();
+    if(error){cloudAuthBox.style.display='block';authLoginForm.classList.add('open');setMessage('Не удалось выйти. Попробуй ещё раз.',true);return}
+    cloudUser=null;setMessage('',false);cloudAuthBox.style.display='none';setAuthUI();return;
+  }
+  cloudAuthBox.style.display='block';
+  authLoginForm.classList.toggle('open');
+  if(authLoginForm.classList.contains('open'))document.getElementById('ownerEmail').focus();
+});
+document.getElementById('tabAdd').addEventListener('click',()=>{document.getElementById('tabAdd').classList.add('active');document.getElementById('tabRate').classList.remove('active');document.getElementById('tabAddPanel').classList.add('active');document.getElementById('tabRatePanel').classList.remove('active')});
+document.getElementById('tabRate').addEventListener('click',()=>{document.getElementById('tabRate').classList.add('active');document.getElementById('tabAdd').classList.remove('active');document.getElementById('tabRatePanel').classList.add('active');document.getElementById('tabAddPanel').classList.remove('active')});
 loginButton.addEventListener('click',async()=>{
   const email=document.getElementById('ownerEmail').value.trim();
   const password=document.getElementById('ownerPassword').value;
@@ -131,17 +146,13 @@ loginButton.addEventListener('click',async()=>{
   loginButton.disabled=true;
   const {data,error}=await supabase.auth.signInWithPassword({email,password});
   loginButton.disabled=false;
-  if(error){setMessage('Вход не выполнен: '+error.message,true);return}
-  cloudUser=data.user;setMessage('Вход выполнен.');setAuthUI();
-});
-logoutButton.addEventListener('click',async()=>{
-  const {error}=await supabase.auth.signOut();
-  if(error){setMessage('Не удалось выйти: '+error.message,true);return}
-  cloudUser=null;setMessage('Вы вышли из аккаунта.');setAuthUI();
+  if(error){setMessage('Неверные данные. Проверь почту и пароль.',true);loginButton.disabled=false;return}
+  cloudUser=data.user;setMessage('',false);setAuthUI();
 });
 supabase.auth.onAuthStateChange((_event,session)=>{cloudUser=session?.user||null;setAuthUI()});
 const {data:sessionData}=await supabase.auth.getSession();
 cloudUser=sessionData.session?.user||null;
+if(!cloudUser)cloudAuthBox.style.display='none';
 await loadCloudData();
 setAuthUI();
 </script>
