@@ -12,34 +12,12 @@ API_KEY = os.environ["STEAM_API_KEY"]
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "steam-data.json"
 
-# Steam App IDs for the 25 games in the challenge.
-GAMES = [
-    (254700, "Resident Evil 4 (2005)"),
-    (233290, "MURDERED: SOUL SUSPECT"),
-    (601360, "Portal: Revolution"),
-    (204450, "Call of Juarez: Gunslinger"),
-    (1687950, "Persona 5 Royal"),
-    (48000, "LIMBO"),
-    (50130, "Mafia II (Classic)"),
-    (349040, "Naruto Shippuden: Ultimate Ninja Storm 4"),
-    (883710, "Resident Evil 2"),
-    (307690, "Sleeping Dogs: Definitive Edition"),
-    (1817230, "Hi-Fi RUSH"),
-    (610370, "Desperados III"),
-    (1091500, "Cyberpunk 2077"),
-    (489830, "Skyrim Special Edition"),
-    (1382330, "Persona 5 Strikers"),
-    (397540, "Borderlands 3"),
-    (22490, "Fallout: New Vegas (PCR)"),
-    (2369390, "Far Cry 6"),
-    (2427410, "S.T.A.L.K.E.R.: Shadow of Chornobyl Enhanced Edition"),
-    (847370, "Sunset Overdrive"),
-    (544750, "Soulcalibur VI"),
-    (389730, "Tekken 7"),
-    (1420290, "No More Heroes"),
-    (105600, "Terraria"),
-    (525480, ".hack//G.U. Last Recode"),
-]
+# The public site and this sync job share one registry file.
+REGISTRY_PATH = ROOT / "games.json"
+REGISTRY = json.loads(REGISTRY_PATH.read_text(encoding="utf-8"))
+GAMES = [(int(game["appid"]), game["name"]) for game in REGISTRY["games"]]
+if len({app_id for app_id, _ in GAMES}) != len(GAMES):
+    raise ValueError("games.json contains duplicate Steam AppIDs")
 
 # Cross-checked totals from Steam Community achievement pages.
 # Games omitted here remain unverified until their published total is checked.
