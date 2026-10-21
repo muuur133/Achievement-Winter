@@ -1,0 +1,231 @@
+{
+  "version": 1,
+  "description": "Single source of truth for Achievement Winter games. id is stable local UI ID; appid is Steam AppID.",
+  "games": [
+    {
+      "id": 0,
+      "appid": 254700,
+      "name": "Resident Evil 4 (2005)",
+      "colors": [
+        "#a34d46",
+        "#311d3e"
+      ]
+    },
+    {
+      "id": 1,
+      "appid": 233290,
+      "name": "MURDERED: SOUL SUSPECT",
+      "colors": [
+        "#647b9b",
+        "#20233d"
+      ]
+    },
+    {
+      "id": 2,
+      "appid": 601360,
+      "name": "Portal: Revolution",
+      "colors": [
+        "#3b8dba",
+        "#26395d"
+      ]
+    },
+    {
+      "id": 3,
+      "appid": 204450,
+      "name": "Call of Juarez: Gunslinger",
+      "colors": [
+        "#c78c4f",
+        "#553a32"
+      ]
+    },
+    {
+      "id": 4,
+      "appid": 1687950,
+      "name": "Persona 5 Royal",
+      "colors": [
+        "#d44c62",
+        "#451c4b"
+      ]
+    },
+    {
+      "id": 5,
+      "appid": 48000,
+      "name": "LIMBO",
+      "colors": [
+        "#7a8493",
+        "#171b2a"
+      ]
+    },
+    {
+      "id": 6,
+      "appid": 50130,
+      "name": "Mafia II (Classic)",
+      "colors": [
+        "#7f899d",
+        "#293143"
+      ]
+    },
+    {
+      "id": 7,
+      "appid": 349040,
+      "name": "Naruto Shippuden: Ultimate Ninja Storm 4",
+      "colors": [
+        "#de9854",
+        "#693e54"
+      ]
+    },
+    {
+      "id": 8,
+      "appid": 883710,
+      "name": "Resident Evil 2",
+      "colors": [
+        "#ba5757",
+        "#321c35"
+      ]
+    },
+    {
+      "id": 9,
+      "appid": 307690,
+      "name": "Sleeping Dogs: Definitive Edition",
+      "colors": [
+        "#cb6555",
+        "#4a253a"
+      ]
+    },
+    {
+      "id": 10,
+      "appid": 1817230,
+      "name": "Hi-Fi RUSH",
+      "colors": [
+        "#ec8050",
+        "#7043a1"
+      ]
+    },
+    {
+      "id": 11,
+      "appid": 610370,
+      "name": "Desperados III",
+      "colors": [
+        "#bd9a62",
+        "#3d514d"
+      ]
+    },
+    {
+      "id": 12,
+      "appid": 1091500,
+      "name": "Cyberpunk 2077",
+      "colors": [
+        "#e6c64b",
+        "#a53e75"
+      ]
+    },
+    {
+      "id": 13,
+      "appid": 489830,
+      "name": "Skyrim Special Edition",
+      "colors": [
+        "#8ea8c8",
+        "#39445c"
+      ]
+    },
+    {
+      "id": 14,
+      "appid": 1382330,
+      "name": "Persona 5 Strikers",
+      "colors": [
+        "#df6b7d",
+        "#5b2d62"
+      ]
+    },
+    {
+      "id": 15,
+      "appid": 397540,
+      "name": "Borderlands 3",
+      "colors": [
+        "#d6aa58",
+        "#725137"
+      ]
+    },
+    {
+      "id": 16,
+      "appid": 22490,
+      "name": "Fallout: New Vegas (PCR)",
+      "colors": [
+        "#c8b67a",
+        "#596746"
+      ]
+    },
+    {
+      "id": 17,
+      "appid": 2369390,
+      "name": "Far Cry 6",
+      "colors": [
+        "#df735f",
+        "#673c46"
+      ]
+    },
+    {
+      "id": 18,
+      "appid": 2427410,
+      "name": "S.T.A.L.K.E.R.: Shadow of Chornobyl Enhanced Edition",
+      "colors": [
+        "#a2b18a",
+        "#384a3d"
+      ]
+    },
+    {
+      "id": 19,
+      "appid": 847370,
+      "name": "Sunset Overdrive",
+      "colors": [
+        "#f29c5c",
+        "#a33f7d"
+      ]
+    },
+    {
+      "id": 20,
+      "appid": 544750,
+      "name": "Soulcalibur VI",
+      "colors": [
+        "#82b8d5",
+        "#443d77"
+      ]
+    },
+    {
+      "id": 21,
+      "appid": 389730,
+      "name": "Tekken 7",
+      "colors": [
+        "#d86b57",
+        "#382d54"
+      ]
+    },
+    {
+      "id": 22,
+      "appid": 1420290,
+      "name": "No More Heroes",
+      "colors": [
+        "#e8b5c7",
+        "#70416d"
+      ]
+    },
+    {
+      "id": 23,
+      "appid": 105600,
+      "name": "Terraria",
+      "colors": [
+        "#6aaf83",
+        "#345b75"
+      ]
+    },
+    {
+      "id": 24,
+      "appid": 525480,
+      "name": ".hack//G.U. Last Recode",
+      "colors": [
+        "#927ed4",
+        "#342d58"
+      ]
+    }
+  ]
+}
