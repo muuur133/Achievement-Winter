@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-21T19:58:22.038521+00:00",
+  "updated_at": "2026-10-21T20:27:56.820370+00:00",
   "steam_id": "76561199223848682",
   "games": {
     "254700": {
@@ -75,8 +75,8 @@
       "name": "Persona 5 Royal",
       "owned": false,
       "family_shared": true,
-      "playtime_minutes": 5978,
-      "playtime_hours": 99.6,
+      "playtime_minutes": 5982,
+      "playtime_hours": 99.7,
       "achievements_unavailable": false,
       "achievements_earned": 46,
       "achievements_total": 53,
@@ -109,7 +109,7 @@
       "name": "Mafia II (Classic)",
       "owned": false,
       "family_shared": true,
-      "playtime_minutes": 616,
+      "playtime_minutes": 617,
       "playtime_hours": 10.3,
       "achievements_unavailable": false,
       "achievements_earned": 28,
