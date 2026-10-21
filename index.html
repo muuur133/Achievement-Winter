@@ -168,7 +168,15 @@ addGameButton.addEventListener('click',async()=>{
   const ok=await window.awPublishOwnerData();
   addGameButton.disabled=!cloudUser||!cloudReady;
   if(!ok){customGames=customGames.filter(x=>x.appid!==appid);window.awGames=window.awGames.filter(g=>Number(g.appid)!==appid);window.awSaveLocal();window.awRender();message.textContent='Не удалось сохранить игру. Попробуй ещё раз.';return}
-  input.value='';message.textContent='Игра добавлена! Steam подтянет название и статистику при следующей синхронизации (обычно до 15 минут).';
+  input.value='';
+  message.textContent='Игра добавлена! Проверяю опубликованные данные Steam…';
+  if(window.awSyncSteamData) await window.awSyncSteamData();
+  const addedGame=window.awGames.find(g=>Number(g.appid)===appid);
+  if(addedGame&&addedGame.name!=='Steam AppID '+appid&&(addedGame.hours!=null||addedGame.total!=null)){
+    message.textContent='Игра добавлена! Название и статистика Steam загружены.';
+  }else{
+    message.textContent='Игра добавлена. Данные ещё не появились — дождись ближайшей синхронизации Steam (обычно до 15 минут).';
+  }
 });
 authToggle.addEventListener('click',async()=>{
   if(cloudUser){
