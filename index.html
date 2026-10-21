@@ -4,6 +4,7 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Achievement Winter</title>
 <style>
+.brand-link{display:inline-block;color:inherit;text-decoration:none;border-radius:6px;transition:opacity .15s,transform .15s}.brand-link:hover{opacity:.82;transform:translateY(-1px)}.brand-link:focus-visible{outline:2px solid #c2afff;outline-offset:5px}
 .delete-game-btn{white-space:nowrap}.cardfoot{flex-wrap:wrap}
 
 :root{color-scheme:dark;--bg:#101323;--panel:#191c2e;--panel2:#22243a;--text:#f2f2ff;--muted:#a6aac8;--accent:#9b7cff;--border:#343951}
@@ -12,7 +13,7 @@
 </style>
 </head>
 <body><div class="wrap">
-<header><div class="top"><div class="brand">❄ ACHIEVEMENT <b>WINTER</b></div><div class="actions"><button class="btn" id="sync">↻ Синхронизация Steam</button><button class="btn primary" id="admin">⚙ Панель владельца</button></div></div>
+<header><div class="top"><a class="brand-link" href="./" aria-label="Achievement Winter — на главную"><div class="brand">❄ ACHIEVEMENT <b>WINTER</b></div></a><div class="actions"><button class="btn" id="sync">↻ Синхронизация Steam</button><button class="btn primary" id="admin">⚙ Панель владельца</button></div></div>
 <section class="hero"><div class="hero-main"><div class="eyebrow">СЕЗОН 2026—2027 · <span id="heroGameCount">25 ИГР</span></div><h1>Зима достижений.<br><span>Путь к 100%.</span></h1><p>Личный архив охоты за достижениями. Каждая игра — отдельная история, каждый трофей приближает к завершению челленджа.</p></div><div class="side"><div><div class="eyebrow">Общий прогресс челленджа</div><div class="big" id="overall">—%</div><div class="track"><div class="fill" id="overallbar"></div></div><p id="summary">Ожидает подключения Steam</p></div><strong>Зимняя цель: <span id="goalGameCount">25</span> игр · 100%</strong><p>Для честного 100% требуется проверка полного списка достижений и DLC.</p></div></section>
 <section class="stats"><div class="stat"><small>ИГР В СПИСКЕ</small><strong id="totalGameCount">25</strong></div><div class="stat"><small>ЗАВЕРШЕНО</small><strong id="done">0</strong></div><div class="stat"><small>ПОЛУЧЕНО АЧИВОК</small><strong id="ach">—</strong></div><div class="stat"><small>ВРЕМЯ В ИГРАХ</small><strong id="hours">—</strong></div></section></header>
 <section class="detail-page" id="detailPage" hidden></section>
