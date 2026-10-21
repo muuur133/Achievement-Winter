@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-20T22:13:20.825315+00:00",
+  "updated_at": "2026-10-21T17:48:52.486768+00:00",
   "steam_id": "76561199223848682",
   "games": {
     "254700": {
@@ -424,6 +424,23 @@
       "schema_achievements_total": 52,
       "achievement_counts_match": true,
       "dlc_scope_verified": true,
+      "achievement_percent": 0.0,
+      "error": null
+    },
+    "1850570": {
+      "appid": 1850570,
+      "name": "DEATH STRANDING DIRECTOR'S CUT",
+      "owned": true,
+      "family_shared": false,
+      "playtime_minutes": 23,
+      "playtime_hours": 0.4,
+      "achievements_unavailable": false,
+      "achievements_earned": 0,
+      "achievements_total": 63,
+      "player_achievements_total": 63,
+      "schema_achievements_total": 63,
+      "achievement_counts_match": true,
+      "dlc_scope_verified": false,
       "achievement_percent": 0.0,
       "error": null
     }
