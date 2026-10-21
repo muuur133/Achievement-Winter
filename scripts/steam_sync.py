@@ -23,7 +23,6 @@ def load_custom_games():
     url = SUPABASE_URL + "/rest/v1/owner_data?select=data&id=eq.1"
     request = urllib.request.Request(url, headers={
         "apikey": SUPABASE_PUBLISHABLE_KEY,
-        "Authorization": "Bearer " + SUPABASE_PUBLISHABLE_KEY,
         "User-Agent": "AchievementWinter/1.0",
     })
     try:
