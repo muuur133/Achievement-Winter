@@ -6,6 +6,7 @@ on:
     branches: [main]
     paths:
       - 'scripts/steam_sync.py'
+      - 'games.json'
       - '.github/workflows/steam-sync.yml'
   schedule:
     - cron: "*/15 * * * *"
