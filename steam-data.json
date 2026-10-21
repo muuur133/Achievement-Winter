@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-21T19:18:16.646795+00:00",
+  "updated_at": "2026-10-21T19:58:22.038521+00:00",
   "steam_id": "76561199223848682",
   "games": {
     "254700": {
@@ -7,8 +7,8 @@
       "name": "Resident Evil 4 (2005)",
       "owned": false,
       "family_shared": true,
-      "playtime_minutes": 1099,
-      "playtime_hours": 18.3,
+      "playtime_minutes": 1123,
+      "playtime_hours": 18.7,
       "achievements_unavailable": false,
       "achievements_earned": 11,
       "achievements_total": 12,
@@ -415,7 +415,7 @@
       "name": ".hack//G.U. Last Recode",
       "owned": true,
       "family_shared": false,
-      "playtime_minutes": 8,
+      "playtime_minutes": 9,
       "playtime_hours": 0.1,
       "achievements_unavailable": false,
       "achievements_earned": 0,
