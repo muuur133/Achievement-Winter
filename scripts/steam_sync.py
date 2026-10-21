@@ -15,9 +15,53 @@ OUTPUT = ROOT / "steam-data.json"
 # The public site and this sync job share one registry file.
 REGISTRY_PATH = ROOT / "games.json"
 REGISTRY = json.loads(REGISTRY_PATH.read_text(encoding="utf-8"))
+SUPABASE_URL = "https://dvtwejwuqmsryphcnskv.supabase.co"
+SUPABASE_PUBLISHABLE_KEY = "sb_publishable_538H6fWM9wq_5mmB7W5hZg_qCJ9KI0D"
+
+def load_custom_games():
+    """Read owner-added AppIDs from the public-readable owner_data row."""
+    url = SUPABASE_URL + "/rest/v1/owner_data?select=data&id=eq.1"
+    request = urllib.request.Request(url, headers={
+        "apikey": SUPABASE_PUBLISHABLE_KEY,
+        "Authorization": "Bearer " + SUPABASE_PUBLISHABLE_KEY,
+        "User-Agent": "AchievementWinter/1.0",
+    })
+    try:
+        with urllib.request.urlopen(request, timeout=20) as response:
+            rows = json.loads(response.read().decode("utf-8"))
+        data = rows[0].get("data", {}) if rows else {}
+        items = data.get("custom_games", []) if isinstance(data, dict) else []
+        valid = []
+        for item in items:
+            try:
+                app_id = int(item.get("appid"))
+                if app_id > 0:
+                    valid.append((app_id, str(item.get("name") or f"Steam AppID {app_id}")))
+            except (TypeError, ValueError, AttributeError):
+                continue
+        return valid
+    except Exception as exc:
+        print(f"Could not load custom games from Supabase: {exc}")
+        return []
+
+def fetch_store_name(app_id):
+    url = "https://store.steampowered.com/api/appdetails?" + urllib.parse.urlencode({"appids": app_id, "l": "en"})
+    request = urllib.request.Request(url, headers={"User-Agent": "AchievementWinter/1.0"})
+    with urllib.request.urlopen(request, timeout=20) as response:
+        payload = json.loads(response.read().decode("utf-8"))
+    entry = payload.get(str(app_id), {})
+    if entry.get("success"):
+        return entry.get("data", {}).get("name")
+    return None
+
 GAMES = [(int(game["appid"]), game["name"]) for game in REGISTRY["games"]]
-if len({app_id for app_id, _ in GAMES}) != len(GAMES):
-    raise ValueError("games.json contains duplicate Steam AppIDs")
+registered_ids = {app_id for app_id, _ in GAMES}
+for app_id, title in load_custom_games():
+    if app_id not in registered_ids:
+        GAMES.append((app_id, title))
+        registered_ids.add(app_id)
+if len(registered_ids) != len(GAMES):
+    raise ValueError("Duplicate Steam AppIDs found in game registry")
 
 # Cross-checked totals from Steam Community achievement pages.
 # Games omitted here remain unverified until their published total is checked.
@@ -70,6 +114,11 @@ def main():
     }
 
     for app_id, title in GAMES:
+        if title == f"Steam AppID {app_id}":
+            try:
+                title = fetch_store_name(app_id) or title
+            except Exception as exc:
+                print(f"Could not resolve Steam title for {app_id}: {exc}")
         library_game = owned.get(app_id, {})
         family_shared = library_game.get("family_shared") in (True, 1, "1")
         item = {
