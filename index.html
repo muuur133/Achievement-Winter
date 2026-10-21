@@ -51,7 +51,7 @@ function render(){let list=games.filter(g=>g.name.toLowerCase().includes($('sear
 function renderDetail(){
  const params=new URLSearchParams(location.search), appid=Number(params.get('game'));
  const detail=$('detailPage');
- const collectionNodes=[$('collectionHead'),$('search').parentElement,$('games'),$('empty'),$('games').nextElementSibling];
+ const collectionNodes=[$('collectionHead'),$('search').parentElement,$('games'),$('empty'),$('tiers').closest('.tier')];
  if(!Number.isSafeInteger(appid)||appid<=0){detail.hidden=true;collectionNodes.forEach(n=>{if(n)n.hidden=false});return}
  const g=games.find(x=>Number(x.appid)===appid);
  if(!g){detail.hidden=false;collectionNodes.forEach(n=>{if(n)n.hidden=true});detail.innerHTML='<button class="btn detail-back" id="detailBack">← Назад к коллекции</button><div class="detail-panel"><h2>Игра не найдена</h2><p class="muted">Проверь ссылку или вернись в коллекцию.</p></div>';$('detailBack').onclick=()=>location.href=location.pathname;return}
