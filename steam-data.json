@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-22T23:00:27.671632+00:00",
+  "updated_at": "2026-10-22T23:39:55.340865+00:00",
   "steam_id": "76561199223848682",
   "games": {
     "254700": {
@@ -404,11 +404,11 @@
       "achievements_earned": 94,
       "achievements_total": 137,
       "player_achievements_total": 137,
-      "schema_achievements_total": null,
-      "achievement_counts_match": null,
-      "dlc_scope_verified": false,
+      "schema_achievements_total": 137,
+      "achievement_counts_match": true,
+      "dlc_scope_verified": true,
       "achievement_percent": 68.6,
-      "error": "Steam schema total differs from verified reference: None vs 137"
+      "error": null
     },
     "525480": {
       "appid": 525480,
