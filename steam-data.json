@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-24T19:49:32.667848+00:00",
+  "updated_at": "2026-10-24T20:44:06.118134+00:00",
   "steam_id": "76561199223848682",
   "games": {
     "254700": {
@@ -24,8 +24,8 @@
       "name": "MURDERED: SOUL SUSPECT",
       "owned": true,
       "family_shared": false,
-      "playtime_minutes": 194,
-      "playtime_hours": 3.2,
+      "playtime_minutes": 204,
+      "playtime_hours": 3.4,
       "achievements_unavailable": false,
       "achievements_earned": 23,
       "achievements_total": 48,
