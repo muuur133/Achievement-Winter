@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-24T13:55:17.662311+00:00",
+  "updated_at": "2026-10-24T18:18:02.734983+00:00",
   "steam_id": "76561199223848682",
   "games": {
     "254700": {
@@ -7,8 +7,8 @@
       "name": "Resident Evil 4 (2005)",
       "owned": false,
       "family_shared": true,
-      "playtime_minutes": 1333,
-      "playtime_hours": 22.2,
+      "playtime_minutes": 1363,
+      "playtime_hours": 22.7,
       "achievements_unavailable": false,
       "achievements_earned": 11,
       "achievements_total": 12,
