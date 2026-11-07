@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-07T09:03:49.359546+00:00",
+  "updated_at": "2026-11-07T12:59:07.077843+00:00",
   "steam_id": "76561199223848682",
   "games": {
     "254700": {
@@ -211,7 +211,7 @@
       "name": "Cyberpunk 2077",
       "owned": true,
       "family_shared": false,
-      "playtime_minutes": 148,
+      "playtime_minutes": 151,
       "playtime_hours": 2.5,
       "achievements_unavailable": false,
       "achievements_earned": 1,
