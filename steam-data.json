@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-07T21:27:22.357118+00:00",
+  "updated_at": "2026-11-07T22:06:43.881533+00:00",
   "steam_id": "76561199223848682",
   "games": {
     "254700": {
@@ -432,8 +432,8 @@
       "name": "Assassin's Creed® Revelations",
       "owned": true,
       "family_shared": false,
-      "playtime_minutes": 7,
-      "playtime_hours": 0.1,
+      "playtime_minutes": 18,
+      "playtime_hours": 0.3,
       "achievements_unavailable": false,
       "achievements_earned": 0,
       "achievements_total": 48,
