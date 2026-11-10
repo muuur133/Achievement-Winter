@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-07T22:06:43.881533+00:00",
+  "updated_at": "2026-11-10T21:52:28.914967+00:00",
   "steam_id": "76561199223848682",
   "games": {
     "254700": {
@@ -312,18 +312,18 @@
       "appid": 2427410,
       "name": "S.T.A.L.K.E.R.: Shadow of Chornobyl Enhanced Edition",
       "owned": false,
-      "family_shared": true,
-      "playtime_minutes": 56,
-      "playtime_hours": 0.9,
-      "achievements_unavailable": false,
-      "achievements_earned": 2,
-      "achievements_total": 44,
-      "player_achievements_total": 44,
-      "schema_achievements_total": 44,
-      "achievement_counts_match": true,
-      "dlc_scope_verified": true,
-      "achievement_percent": 4.5,
-      "error": null
+      "family_shared": false,
+      "playtime_minutes": null,
+      "playtime_hours": null,
+      "achievements_unavailable": true,
+      "achievements_earned": null,
+      "achievements_total": null,
+      "player_achievements_total": null,
+      "schema_achievements_total": null,
+      "achievement_counts_match": null,
+      "dlc_scope_verified": false,
+      "achievement_percent": null,
+      "error": "HTTP 403: Profile is not public"
     },
     "847370": {
       "appid": 847370,
