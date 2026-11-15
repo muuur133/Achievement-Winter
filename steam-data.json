@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-10T21:52:28.914967+00:00",
+  "updated_at": "2026-11-15T19:03:30.031304+00:00",
   "steam_id": "76561199223848682",
   "games": {
     "254700": {
@@ -228,7 +228,7 @@
       "name": "Skyrim Special Edition",
       "owned": true,
       "family_shared": false,
-      "playtime_minutes": 2052,
+      "playtime_minutes": 2053,
       "playtime_hours": 34.2,
       "achievements_unavailable": false,
       "achievements_earned": 22,
@@ -449,16 +449,16 @@
       "name": "Outlast",
       "owned": false,
       "family_shared": true,
-      "playtime_minutes": 262,
-      "playtime_hours": 4.4,
+      "playtime_minutes": 389,
+      "playtime_hours": 6.5,
       "achievements_unavailable": false,
-      "achievements_earned": 4,
+      "achievements_earned": 8,
       "achievements_total": 14,
       "player_achievements_total": 14,
       "schema_achievements_total": 14,
       "achievement_counts_match": true,
       "dlc_scope_verified": false,
-      "achievement_percent": 28.6,
+      "achievement_percent": 57.1,
       "error": null
     }
   }
